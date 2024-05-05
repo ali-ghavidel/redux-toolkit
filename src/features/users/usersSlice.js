@@ -1,7 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 
-
 const USERS_URL = "https://jsonplaceholder.typicode.com/users";
 
 const initialState = [];
@@ -20,14 +19,14 @@ const userSlice = createSlice({
   initialState,
   reducers: {},
   extraReducers(builder) {
-    builder
-    .addCase(fetchUsers.fulfilled, (state,action)=>{
-        return action.payload
-    })
+    builder.addCase(fetchUsers.fulfilled, (state, action) => {
+      return action.payload;
+    });
   },
 });
 
 export const selectAllUsers = (state) => state.users;
-
+export const selectUserById = (state, userId) =>
+  state.users.find((user) => Number(user.id) === Number(userId));
 
 export default userSlice.reducer;
