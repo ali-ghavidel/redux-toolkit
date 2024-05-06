@@ -7,7 +7,9 @@ import { store } from "./app/store";
 import { Provider } from "react-redux";
 import { fetchUsers } from "./features/users/usersSlice";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { extendedApiSlice } from "./features/posts/postsSlice";
 
+store.dispatch(extendedApiSlice.endpoints.getPosts.initiate());
 store.dispatch(fetchUsers());
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
